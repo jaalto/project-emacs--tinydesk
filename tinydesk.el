@@ -1181,7 +1181,7 @@ Marking is only done if word is valid filename."
 
 ;;; ----------------------------------------------------------------------
 ;;;
-;;;###autolaod
+;;;###autoload
 (defun tinydesk-unload (file &optional verb)
   "Unload all files from Emacs that are in state file FILE.
 
@@ -1244,7 +1244,7 @@ call always turns on verbose."
 
 ;;; ----------------------------------------------------------------------
 ;;;
-;;;###autolaod
+;;;###autoload
 (defun tinydesk-mode (&optional no-face verb)
   "Mark and parse buffer's fist words as loada files.
 If NO-FACE is non-nil, the default mouse marking isn't performed. VERB.
@@ -1281,7 +1281,6 @@ Mode description:
 ;;; ----------------------------------------------------------------------
 ;;;
 ;;;###autoload** Lint miscellaneous
-
 (defun turn-on-tinydesk-mode ()
   "Turn on `tinydesk-mode'."
   (interactive)
@@ -1325,7 +1324,7 @@ Mode description:
 
 ;;; ----------------------------------------------------------------------
 ;;;
-;;;###autolaod
+;;;###autoload
 (defun tinydesk-edit-state-file (file)
   "Load state FILE into buffer for editing.
 You can add comments and remove/add files. Turns on `tinydesk-mode'.
@@ -1367,7 +1366,7 @@ Following commands are available in `tinydesk-mode'.
 
 ;;; ----------------------------------------------------------------------
 ;;;
-;;;###autolaod
+;;;###autoload
 (defun tinydesk-save-state (file &optional mode files verb)
   "Output all files in Emacs into FILE.
 Notice, that this concerns only buffers with filenames.
@@ -1504,7 +1503,7 @@ directory part, instead of the <N>, so that the names would read:
 
 ;;; ----------------------------------------------------------------------
 ;;;
-;;;###autolaod
+;;;###autoload
 (defun tinydesk-recover-state (file &optional ulp pop verb)
   "Load all files listed in FILE into Emacs.
 FILE can have empty lines or comments. No spaces allowed at the
@@ -1593,7 +1592,7 @@ References:
 
 ;;; ----------------------------------------------------------------------
 ;;;
-;;;###autolaod
+;;;###autoload
 (defun tinydesk-recover-last-state ()
   "If Emacs was closed / crashed, recover last saved session.
 References:
