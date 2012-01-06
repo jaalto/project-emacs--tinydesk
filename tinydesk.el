@@ -504,11 +504,17 @@ path, garbage at line...Hooks may check the contents of this.")
 (defvar tinydesk--last-state-file  nil
   "Last state file loaded is stored here.")
 
+(eval-and-compile
+  (unless (fboundp 'called-interactively-p) ; Emacs < 23
+    (defun called-interactively-p (&rest args)
+      "Emacs < 23 compatibility. ARGS are ignored."
+      (interactive-p))))
+
 ;;; ----------------------------------------------------------------------
 ;;;
 (defmacro tinydesk-verbose ()
   "Set variable `verb'."
-  `(setq verb (or verb (interactive-p))))
+  `(setq verb (or verb (called-interactively-p 'interactive))))
 
 ;;; ----------------------------------------------------------------------
 ;;;
@@ -911,7 +917,7 @@ TinyDesk: Can't do state autosave: [%s] is not writable" save-to))
           (delete-region (point) (line-end-position)))
         (forward-line 1)))
     (set-buffer-modified-p nil)
-    (if (interactive-p)
+    (if (called-interactively-p 'interactive)
         (message "TinyDesk: properties cleared from buffer"))))
 
 ;;; ----------------------------------------------------------------------
@@ -1010,7 +1016,7 @@ Also add textual comment to the end of line if needed."
   "Change face to 'error in those lines whose first word is not valid file."
   (interactive)
   (tinydesk-set-face-non-files-region (point-min) (point-max))
-  (if (interactive-p)
+  (if (called-interactively-p 'interactive)
       (message "TinyDesk: marked non-lodable files")))
 
 ;;; ----------------------------------------------------------------------
@@ -1103,7 +1109,7 @@ Marking is only done if word is valid filename."
      (point-max)
      (tinydesk-comment-re)
      tinydesk--comment-start-level
-     (or (interactive-p)
+     (or (called-interactively-p 'interactive)
          verb))))
 
 ;;; ........................................................... &mouse ...
@@ -1172,7 +1178,7 @@ Marking is only done if word is valid filename."
 		  (tinydesk-read-word)))
       (when word
         (tinydesk-handle-text-property prop word)))
-     ((interactive-p)
+     ((called-interactively-p 'interactive)
       (message
        (substitute-command-keys
         (concat
@@ -1280,7 +1286,7 @@ Mode description:
 
 ;;; ----------------------------------------------------------------------
 ;;;
-;;;###autoload** Lint miscellaneous
+;;;###autoload
 (defun turn-on-tinydesk-mode ()
   "Turn on `tinydesk-mode'."
   (interactive)
@@ -1441,7 +1447,7 @@ Input:
 	  (insert (eval title)))
 	(run-hooks 'tinydesk--save-after-hook)
 	(write-region (point-min) (point-max) file))
-      (if (interactive-p)
+      (if (called-interactively-p 'interactive)
           (message (concat "TinyDesk: State saved to file " file)))
       ;; ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ catch ^^^
       nil)
@@ -1693,7 +1699,7 @@ Return:
         (when err
           (setq ERR t)
           (push word tinydesk--rejected-file-list)
-          (and (interactive-p)
+          (and (called-interactively-p 'interactive)
                (tinydesk-line-property-set-error))
           (setq  not-loaded
                  (concat
