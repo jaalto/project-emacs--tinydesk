@@ -1,0 +1,32 @@
+Package: tinydesk
+Section: extensions
+License: GPL-2+
+Depends: emacs (>= 22)
+Status: stable
+Archive:
+Compat:
+Maintainer: Jari Aalto <jari.aalto@cante.net>
+Bugs:
+Upstream: Jari Aalto <jari.aalto@cante.net>
+Upstream-Bugs: https://github.com/jaalto/project-emacs--tinydesk/issues
+Vcs-Type: git
+Vcs-Url: git://github.com/jaalto/project-emacs--tinydesk.git
+Vcs-Browser: https://github.com/jaalto/project-emacs--tinydesk
+Homepage:
+Wiki: http://www.emacswiki.org/emacs/TinyTools
+Commentary: tinydesk.el
+Description: save and restore files between sessions
+ Simple desktop save and restory command. Only filenames and directories
+ are read/saved. Unlike the other desktop savers, this one can unload files
+ from Emacs. You just tell it to remove 'these files listed in file
+ state.XXX', and those files will be removed. You can use this fature to
+ collect 'projects' and switch between them easily. After project1, unload
+ it and load project2 for editing. Parses any file that includes filenames
+ and comments. In regular intervals saves the state of Emacs. If Emacs
+ crashes you can recover the previous session.
+ .
+ Later Emacs versions introduced "~/.saves*" files that I found disturbing
+ occupying the home directory. With this package all the files are put into
+ one state state file, which can be reused.
+ .
+ See also standard Emacs desktop.el
