@@ -508,7 +508,8 @@ path, garbage at line...Hooks may check the contents of this.")
   (unless (fboundp 'called-interactively-p) ; Emacs < 23
     (defun called-interactively-p (&rest args)
       "Emacs < 23 compatibility. ARGS are ignored."
-      (interactive-p))))
+      (let ((function 'interactive-p))
+	(funcall function)))))
 
 ;;; ----------------------------------------------------------------------
 ;;;
@@ -853,7 +854,8 @@ References:
           (setq tinydesk--auto-save-interval 10))
       (if (< tinydesk--auto-save-interval 5) ;; Must be more than 5
           (setq tinydesk--auto-save-interval 10))
-      (incf tinydesk--auto-save-counter)
+      (setq tinydesk--auto-save-counter
+	    (1+ tinydesk--auto-save-counter))
       ;;  time's up? Select name if it's string.
       (cond
        ((or force
@@ -1178,12 +1180,12 @@ Marking is only done if word is valid filename."
 		  (tinydesk-read-word)))
       (when word
         (tinydesk-handle-text-property prop word)))
-     ((called-interactively-p 'interactive)
-      (message
-       (substitute-command-keys
-        (concat
-         "TinyDesk: Can't find mouse face...   Mark buffer first with "
-         "\\[tinydesk-mark-buffer-loadable]"))))))
+     (if (called-interactively-p 'interactive)
+	 (message
+	  (substitute-command-keys
+	   (concat
+	    "TinyDesk: Can't find mouse face...   Mark buffer first with "
+	    "\\[tinydesk-mark-buffer-loadable]"))))))
 
 ;;; ----------------------------------------------------------------------
 ;;;
@@ -1231,11 +1233,11 @@ call always turns on verbose."
               (cond
                ((not (buffer-modified-p))
                 (kill-buffer (current-buffer))
-                (incf count))
+                (setq count (1+ count)))
                (t
                 (message "Tinydesk: Buffer %s modified. Won't unload."
                          (buffer-name)))))
-            (incf  total))
+            (setq total (1+ total)))
           (forward-line))))
     (when verb
       (if (> count 0)
