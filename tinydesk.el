@@ -1022,8 +1022,6 @@ Also add textual comment to the end of line if needed."
       (message "TinyDesk: marked non-lodable files")))
 
 ;;; ----------------------------------------------------------------------
-;;; - This function is not general.
-;;; #todo: rewrite it for this module only
 ;;;
 (defun tinydesk-mark-region (beg end &optional com-re sub-level verb)
   "Make all filenames in the buffer loadable by mouse.
@@ -1101,14 +1099,23 @@ Example:
 
 ;;; ----------------------------------------------------------------------
 ;;;
-(defun tinydesk-mark-buffer-loadable (&optional verb)
-  "Parse whole buffer and make first _word_ loadable with mouse. VERB.
-Marking is only done if word is valid filename."
-  (interactive)
+(defun tinydesk-mark-buffer-loadable (&optional beg end verb)
+  "Parse BEG END and make first _word_ loadable with mouse.
+In interactive call, if 'current-prefix-arg' is non-nil, use region
+BEG END to mark area. By default region on whole buffer.
+
+Marking is only done if word is a valid filename."
+  (interactive
+   (if current-prefix-arg
+       (list
+	(region-beginning)
+	(region-end)
+	'verbose)
+     (list (point-min) (point-max) 'verbose)))
   (save-excursion
     (tinydesk-mark-region
-     (point-min)
-     (point-max)
+     (or beg (point-min))
+     (or end (point-max))
      (tinydesk-comment-re)
      tinydesk--comment-start-level
      (or (called-interactively-p 'interactive)
