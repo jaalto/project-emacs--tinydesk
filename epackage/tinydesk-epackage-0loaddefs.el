@@ -26,7 +26,6 @@ Mode description:
 \\{tinydesk-mode-map}
 
 \(fn &optional NO-FACE VERB)" t nil)
-** Lint miscellaneous
 
 (autoload 'turn-off-tinydesk-mode "tinydesk" "\
 Turn off `tinydesk-mode'.
