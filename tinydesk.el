@@ -1417,7 +1417,7 @@ Input:
       (error
        (concat
 	"TinyDesk: State saving aborted. "
-	"Please save to new file or kill buffer: %s" file)))
+	"Please save to new file or kill buffer: %s") file))
     (run-hooks 'tinydesk--save-before-hook)
     (or files
         (setq files (and (fboundp save-func)
