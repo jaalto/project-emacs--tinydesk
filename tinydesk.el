@@ -1,5 +1,4 @@
 ;;; tinydesk.el --- Save and restore files between Emacs sessions
-
 ;; Copyright (C) 1995-2013 Jari Aalto
 
 ;; Author:	Jari Aalto
@@ -35,10 +34,11 @@
 ;;; Install:
 
 ;;   Put this file on your Emacs-Lisp `load-path', add following into your
-;;   $HOME/.emacs startup file
+;;   ~/.emacs startup file
 ;;
 ;;      ;; (add-hook 'tinydesk--load-hook 'tinydesk-recover-last-state)
 ;;      (add-hook 'tinydesk--load-hook 'tinydesk-install-default-keybindings)
+;;      (add-hook 'tinydesk--load-hook 'tinydesk-install)
 ;;      (require 'tinydesk)
 ;;
 ;;   or use the autoload feature. Notice that the automatic "file
@@ -47,6 +47,7 @@
 ;;
 ;;      (add-hook 'tinydesk--load-hook 'tinydesk-default-emacs-keybindings)
 ;;      (add-hook 'tinydesk--load-hook 'tinydesk-recover-last-state)
+;;      (add-hook 'tinydesk--load-hook 'tinydesk-install)
 ;;      (autoload 'tinydesk-mode            "tinydesk" "" t)
 ;;      (autoload 'tinydesk-save-state      "tinydesk" "" t)
 ;;      (autoload 'tinydesk-unload          "tinydesk" "" t)
@@ -289,7 +290,7 @@ Files that have been modified are not unloaded."
   :type  'hook
   :group 'TinyDesk)
 
-(defcustom tinydesk--load-hook nil
+(defcustom tinydesk--load-hook '(tinydesk-install)
   "*Hook run when file has been loaded."
   :type  'hook
   :group 'TinyDesk)
@@ -1746,9 +1747,7 @@ Return:
     (add-hook 'write-file-functions 'tinydesk-auto-save)
     (add-hook 'find-file-hook 'turn-on-tinydesk-mode-maybe))))
 
-(tinydesk-install)
-
-(provide   'tinydesk)
+(provide 'tinydesk)
 (run-hooks 'tinydesk--load-hook)
 
 ;;; tinydesk.el ends here
