@@ -12,7 +12,7 @@ Upstream-Bugs: https://github.com/jaalto/project-emacs--tinydesk/issues
 Vcs-Type: git
 Vcs-Url: git://github.com/jaalto/project-emacs--tinydesk.git
 Vcs-Browser: https://github.com/jaalto/project-emacs--tinydesk
-Homepage:
+Homepage: https://github.com/jaalto/project-emacs--tinydesk
 Wiki: http://www.emacswiki.org/emacs/TinyTools
 Commentary: tinydesk.el
 Description: save and restore files between sessions
