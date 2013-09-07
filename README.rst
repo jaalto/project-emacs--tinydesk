@@ -14,11 +14,12 @@ Description
 This project contains an `Emacs`_ package that helps saving and
 restoring list of open files and directories.
 
-E.g if you want to hae different kind of editing sessions, you can
-restore or combine any one of the them into current Emacs. Likewise,
-you can **unload** list of files from Emacs.
+E.g if you want to keep certain files to a "project", you can restore
+or combine any one of the these saved states into current Emacs.
+Likewise, you can **unload** list of files, i.e. projects, from Emacs.
 
-See documentation at the beginning of ``*.el`` file for further information.
+See documentation at the beginning of ``*.el`` file for further
+information.
 
 Epackage
 ========
