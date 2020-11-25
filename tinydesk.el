@@ -875,7 +875,7 @@ References:
         (if (or (not (file-directory-p (file-name-directory save-to)))
                 (and (file-exists-p save-to)
                      (not (file-writable-p save-to))))
-            (error "\
+            (message "\
 TinyDesk: Can't do state autosave: [%s] is not writable" save-to))
         (save-window-excursion
           (save-excursion
