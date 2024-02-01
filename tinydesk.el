@@ -1,5 +1,5 @@
 ;;; tinydesk.el --- Save and restore files between Emacs sessions
-;; Copyright (C) 1995-2013 Jari Aalto
+;; Copyright (C) 1995-2024 Jari Aalto
 
 ;; Author:	Jari Aalto
 ;; Maintainer:	Jari Aalto
