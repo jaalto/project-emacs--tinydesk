@@ -14,8 +14,8 @@ call always turns on verbose.
 \(fn FILE &optional VERB)" t nil)
 
 (autoload 'tinydesk-mode "tinydesk" "\
-Mark and parse buffer's fist words as loada files.
-If NO-FACE is non-nil, the default mouse marking isn't performed. VERB.
+Mark and parse buffer\='s fist words as loada files.
+If NO-FACE is non-nil, the default mouse marking isn\='t performed. VERB.
 
 Comments in the right tell what is the files status:
 loaded      = file inside Emacs already
@@ -51,8 +51,8 @@ Input:
 
   MODE          Control what is saved:
                  nil    only filenames
-                 '(4)   \\[universal-argument], filenames and directories.
-                 '(16)  \\[universal-argument] \\[universal-argument]
+                 \='(4)   \\[universal-argument], filenames and directories.
+                 \='(16)  \\[universal-argument] \\[universal-argument]
                         Use absolute paths to HOME.
 
   FILES         filenames , absolute ones. If nil then
@@ -66,7 +66,7 @@ Load all files listed in FILE into Emacs.
 FILE can have empty lines or comments. No spaces allowed at the
 beginning of filename. The state FILE itself is not left inside
 Emacs if everything loads well. When all files are already
-in Emacs, you may see message '0 files loaded'.
+in Emacs, you may see message \"0 files loaded\".
 
 In case there were problems, the FILE will be shown and the
 problematic lines are highlighted.
@@ -77,7 +77,7 @@ Input:
 
   FILE          state file to load
 
-  ULP           'unload previous' if non-nil then unload previously
+  ULP           \"unload previous\" if non-nil then unload previously
                 loaded files according to `tinydesk--last-state-file'
 
   POP           if non-nil, show first buffer in saved
