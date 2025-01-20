@@ -1525,7 +1525,7 @@ directory part, instead of the <N>, so that the names would read:
 FILE can have empty lines or comments. No spaces allowed at the
 beginning of filename. The state FILE itself is not left inside
 Emacs if everything loads well. When all files are already
-in Emacs, you may see message '0 files loaded'.
+in Emacs, you may see message \"0 files loaded\".
 
 In case there were problems, the FILE will be shown and the
 problematic lines are highlighted.
