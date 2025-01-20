@@ -353,8 +353,8 @@ TinyDesk: Can't determine default value ~/tmp for `tinydesk--directory-location'
 
 (defcustom tinydesk--directory-save-suggested 'default
   "*How the state file's directory location is suggested.
-'last        Offer last saved directory.
-'default     Always offer the default directory `tinydesk--directory-location'"
+\='last        Offer last saved directory.
+\='default     Always offer the default directory `tinydesk--directory-location'"
   :type  '(choice
            (const last)
            (const default))
@@ -402,7 +402,7 @@ For full documentation, see function `tinydesk-auto-save'"
 Match is case sensitive. If you do want not case sensitive match,
 set this variable to nil and use custom setup:
 
-   (setq tinydesk--save-after-hook 'my-tinydesk--save-after-hook)
+   (setq tinydesk--save-after-hook \='my-tinydesk--save-after-hook)
    (defun my-tinydesk--save-after-hook ()
       (flush-lines REGEXP))"
   :type  '(string :tag "Regexp")
@@ -456,7 +456,7 @@ Arguments passed to function:
     (error     .  italic))
   "*Alist of faces used for marking text.
 The default value is:
-  '((file-pick .  highlight)
+  \='((file-pick .  highlight)
     (error     .  italic)))"
   :type '(list
           (cons
@@ -776,7 +776,7 @@ References:
 ;;; ----------------------------------------------------------------------
 ;;;
 (defun tinydesk-dired-table  ()
-  "Return dired buffer table '((directory  dired-buffer) ...)."
+  "Return dired buffer table \='((directory  dired-buffer) ...)."
   (interactive)
   (let ((blist   (buffer-list))
         ;;  ByteCompiler doesn't know that I do
@@ -976,7 +976,7 @@ TinyDesk: Can't do state autosave: [%s] is not writable" save-to))
 ;;; ----------------------------------------------------------------------
 ;;;
 (defun tinydesk-set-face-non-files-region (beg end)
-  "In region BEG END set 'error face to invalid files (first word).
+  "In region BEG END set \='error face to invalid files (first word).
 Also add textual comment to the end of line if needed."
   (interactive "r")
   (let ((empty-re      "^[ \t]*$")
@@ -1016,7 +1016,7 @@ Also add textual comment to the end of line if needed."
 ;;; ----------------------------------------------------------------------
 ;;;
 (defun tinydesk-set-face-non-files-buffer  ()
-  "Change face to 'error in those lines whose first word is not valid file."
+  "Change face to \='error in those lines whose first word is not valid file."
   (interactive)
   (tinydesk-set-face-non-files-region (point-min) (point-max))
   (if (called-interactively-p 'interactive)
@@ -1101,8 +1101,8 @@ Example:
 ;;; ----------------------------------------------------------------------
 ;;;
 (defun tinydesk-mark-buffer-loadable (&optional beg end verb)
-  "Parse BEG END and make first _word_ loadable with mouse.
-In interactive call, if 'current-prefix-arg' is non-nil, use region
+  "Parse BEG END and make first word loadable with mouse.
+In interactive call, if `current-prefix-arg' is non-nil, use region
 BEG END to mark area. By default region on whole buffer.
 
 Marking is only done if word is a valid filename."
@@ -1148,7 +1148,7 @@ Marking is only done if word is a valid filename."
 ;;; ----------------------------------------------------------------------
 ;;;
 (defun tinydesk-expunge-unloaded  ()
-  "Remove lines that have 'unloaded' flag."
+  "Remove lines that read \"unloaded\"."
   (interactive)
   (save-excursion
     (tinydesk-pmin)
@@ -1393,8 +1393,8 @@ Input:
 
   MODE          Control what is saved:
                  nil    only filenames
-                 '(4)   \\[universal-argument], filenames and directories.
-                 '(16)  \\[universal-argument] \\[universal-argument]
+                 \='(4)   \\[universal-argument], filenames and directories.
+                 \='(16)  \\[universal-argument] \\[universal-argument]
                         Use absolute paths to HOME.
 
   FILES         filenames , absolute ones. If nil then
@@ -1536,7 +1536,7 @@ Input:
 
   FILE          state file to load
 
-  ULP           'unload previous' if non-nil then unload previously
+  ULP           \='unload previous' if non-nil then unload previously
                 loaded files according to `tinydesk--last-state-file'
 
   POP           if non-nil, show first buffer in saved
@@ -1639,7 +1639,7 @@ References:
 
 Return:
 
-   '(count err not-loaded-string first-entry)
+   \='(count err not-loaded-string first-entry)
 
    count                how many files actually loaded
    err                  error while load
