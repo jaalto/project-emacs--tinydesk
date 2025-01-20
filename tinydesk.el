@@ -875,7 +875,7 @@ References:
         (if (or (not (file-directory-p (file-name-directory save-to)))
                 (and (file-exists-p save-to)
                      (not (file-writable-p save-to))))
-            (error "\
+            (message "\
 TinyDesk: Can't do state autosave: [%s] is not writable" save-to))
         (save-window-excursion
           (save-excursion
@@ -1305,15 +1305,12 @@ Mode description:
 ;;; ----------------------------------------------------------------------
 ;;;
 (defun tinydesk-file-p ()
-  "Return t if `tinydesk--save-title' is at the beginning of buffer."
-  (let ((string (substring
-		 (or (eval tinydesk--save-title)
-		     "####No-string-available###")
-		 0 20)))
+  "Return t if 'Emacs tinydesk.el state file' is at the beginning of buffer."
+  (let ((string "Emacs tinydesk.el state file"))
     (save-excursion
       (tinydesk-pmin)
       (when (re-search-forward
-             (concat "^" (regexp-quote string))
+             (regexp-quote string)
 	     (min 300
 		  (point-max))
 	     'noerr)
