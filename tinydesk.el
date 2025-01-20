@@ -442,7 +442,7 @@ Value nil to preserve `buffer-list' order."
 
 (defcustom tinydesk--get-save-file-function 'tinydesk-get-save-files
   "*Function to return list of filenames that are stored to state file.
-This function isn't run if `tinydesk-save-state' is explicitely
+This function isn\='t run if `tinydesk-save-state' is explicitely
 run with parameter FILES.
 
 Arguments passed to function:
